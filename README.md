@@ -1,11 +1,12 @@
 # customer_behaviour_analysis
 Data analytics project for customer behavior using Python,SQL and PowerBI
 Customer Behavior Data Analytics Project
-Overview
+
+**Overview**
 
 This project analyzes customer purchasing behavior to identify patterns in sales, revenue, and customer demographics. The analysis was performed using Python, SQL, and Power BI, and the insights are presented through an interactive Customer Behavior Dashboard.
 
-The goal of the project is to transform raw customer data into meaningful insights that help businesses understand:
+The goal of the project is to transform raw customer data into meaningful business insights that help organizations understand:
 
 Customer purchasing trends
 
@@ -15,15 +16,15 @@ Sales distribution across different age groups
 
 Customer subscription behavior
 
-Overall customer satisfaction through review ratings
+Customer satisfaction through review ratings
 
 The final output includes data cleaning, SQL analysis, an interactive Power BI dashboard, and a presentation summarizing the results.
 
-Dataset
+**Dataset**
 
-The dataset contains customer transaction and demographic information used to analyze shopping behavior.
+The dataset contains customer transaction and demographic data used to analyze shopping behavior.
 
-Main attributes in the dataset include:
+**Key attributes include:**
 
 Customer ID
 
@@ -51,11 +52,11 @@ Previous Purchases
 
 Payment Method
 
-The dataset was loaded and prepared in Python before being analyzed using SQL and visualized in Power BI.
+The dataset was loaded and cleaned in Python, then analyzed using SQL and visualized in Power BI.
 
-Tools & Technologies
+**Tools & Technologies**
 
-The project uses the following tools:
+The project uses the following technologies:
 
 Python (Pandas) – Data loading and cleaning
 
@@ -69,11 +70,11 @@ Gamma – Presentation creation
 
 Power BI Dashboard
 
-The Customer Behavior Dashboard summarizes key business metrics and insights from the dataset.
+The Customer Behavior Dashboard provides a visual summary of key business metrics and insights.
 
-Key Performance Indicators (KPIs)
+**Key Performance Indicators (KPIs)**
 
-The dashboard highlights three main KPIs:
+The dashboard highlights three major KPIs:
 
 3.9K Total Customers
 
@@ -81,42 +82,46 @@ $59.76 Average Purchase Amount
 
 3.75 Average Review Rating
 
-These metrics provide a quick overview of customer activity and purchasing behavior.
+These metrics provide a quick overview of customer engagement and purchasing behavior.
 
-Dashboard Insights
+**Dashboard Insights**
 1. Customer Subscription Status
 
-The dashboard shows the percentage of customers who are subscribed versus non-subscribed.
+A donut chart shows the percentage of customers by subscription status:
 
 73% Non-Subscribed Customers
 
 27% Subscribed Customers
 
-This indicates a potential opportunity to increase subscription adoption.
+This indicates a significant opportunity to grow subscription-based customers.
 
 2. Revenue by Product Category
 
-Revenue analysis across product categories shows:
+Revenue distribution across categories shows:
 
 Clothing generates the highest revenue
 
-Followed by Accessories, Footwear, and Outerwear
+Followed by Accessories
 
-This helps identify the most profitable product segments.
+Footwear
+
+Outerwear
+
+This insight helps businesses identify their most profitable product categories.
 
 3. Sales by Category
 
-The number of transactions by category indicates purchasing frequency.
+The number of transactions by category highlights customer purchasing frequency.
 
-Clothing has the highest number of sales
+Clothing has the highest sales volume
 
-Accessories follows next
+Accessories is the second most purchased category
 
-Footwear and Outerwear have lower sales volumes
+Footwear and Outerwear have comparatively lower sales
 
 4. Revenue by Age Group
 
-Revenue contribution by age group shows that:
+Revenue contribution across customer age groups shows:
 
 Young Adults generate the highest revenue
 
@@ -124,27 +129,31 @@ Middle-aged customers contribute the second highest
 
 Adults and Seniors contribute slightly less
 
-This insight helps businesses target their most valuable customer segments.
+This helps identify high-value customer segments.
 
 5. Sales by Age Group
 
-The sales distribution by age group highlights which customers make the most purchases.
+Sales distribution shows that:
 
-Young Adults and Middle-Aged customers represent the largest share of transactions.
+Young Adults and Middle-Aged customers make the most purchases
 
-Dashboard Filters
+Seniors and Adults have lower purchase frequency
 
-The dashboard allows users to interactively explore the data using filters such as:
+This information can guide marketing and targeting strategies.
+
+**Dashboard Filters**
+
+The dashboard includes interactive filters that allow users to explore the data by:
 
 Subscription Status
 
 Gender
 
-Category
+Product Category
 
 Shipping Type
 
-Shipping type options include:
+Shipping options available:
 
 2-Day Shipping
 
@@ -158,12 +167,12 @@ Standard
 
 Store Pickup
 
-These filters help users analyze customer behavior under different conditions.
+These filters enable dynamic exploration of customer behavior.
 
-Project Workflow
+**Project Workflow**
 1. Data Loading
 
-The dataset was imported into Python using Pandas and inspected to understand its structure.
+The dataset was imported into Python using Pandas to inspect the structure, columns, and data types.
 
 2. Data Cleaning
 
@@ -179,7 +188,7 @@ Standardizing column names
 
 3. SQL Analysis
 
-The cleaned dataset was analyzed using SQL to extract insights such as:
+The cleaned dataset was analyzed using SQL queries to extract insights such as:
 
 Top selling categories
 
@@ -191,23 +200,23 @@ Sales distribution across demographics
 
 4. Dashboard Development
 
-The dataset was imported into Power BI where visualizations were created to build the final interactive dashboard.
+The dataset was imported into Power BI where visualizations were created to build the interactive dashboard.
 
-Key Insights
+**Key Insights**
 
 Important findings from the analysis include:
 
 Clothing is the top-performing category in both revenue and sales.
 
-Young adults are the most active customers.
+Young Adults are the most active buyers.
 
-A large portion of customers are not subscribed, indicating potential growth for subscription programs.
+73% of customers are not subscribed, indicating an opportunity for subscription growth strategies.
 
-The average purchase amount is approximately $59.76 per transaction.
+The average purchase amount is $59.76 per transaction.
 
-Customer review ratings average 3.75, suggesting moderate satisfaction.
+The average review rating is 3.75, indicating moderate customer satisfaction.
 
-Project Structure
+**Project Structure**
 customer-behavior-analysis
 │
 ├── data
@@ -226,6 +235,6 @@ customer-behavior-analysis
 │   └── project_presentation.ppt
 │
 └── README.md
-Conclusion
+**Conclusion**
 
-This project demonstrates how Python, SQL, and Power BI can be used to analyze customer data and transform it into actionable insights. The interactive dashboard helps businesses better understand purchasing patterns and supports data-driven decision making.
+This project demonstrates how Python, SQL, and Power BI can be used to transform raw customer data into actionable insights. The interactive dashboard helps businesses understand customer behavior, sales patterns, and revenue drivers, enabling data-driven decision making.
