@@ -4,27 +4,27 @@ select gender, SUM(purchase_amount) as revenue
 from customer
 group by gender
 
-
+________________________________________
 --Q2. Which customers used a discount but still spent more than the average purchase amount? 
 select customer_id, purchase_amount 
 from customer 
 where discount_applied = 'Yes' and purchase_amount >= (select AVG(purchase_amount) from customer)
 
-
+________________________________________
 -- Q3. Which are the top 5 products with the highest average review rating?
 select item_purchased, round(avg(review_rating::numeric),2) as "Average Product Rating"
 from customer	
 group by item_purchased
 order by avg(review_rating) desc
 limit 5
-
+________________________________________
 --Q4. Compare the average Purchase Amounts between Standard and Express Shipping. 
 select shipping_type, 
 ROUND(AVG(purchase_amount),2)
 from customer
 where shipping_type in ('Standard','Express')
 group by shipping_type;
-
+________________________________________
 --Q5. Do subscribed customers spend more? Compare average spend and total revenue 
 --between subscribers and non-subscribers.
 SELECT subscription_status,
@@ -34,7 +34,7 @@ SELECT subscription_status,
 FROM customer
 GROUP BY subscription_status
 ORDER BY total_revenue,avg_spend DESC;
-
+________________________________________
 --Q6. Which 5 products have the highest percentage of purchases with discounts applied?
 SELECT item_purchased,
        ROUND(100.0 * SUM(CASE WHEN discount_applied = 'Yes' THEN 1 ELSE 0 END)/COUNT(*),2) AS discount_rate
@@ -42,7 +42,7 @@ FROM customer
 GROUP BY item_purchased
 ORDER BY discount_rate DESC
 LIMIT 5;
-
+________________________________________
 
 --Q7. Segment customers into New, Returning, and Loyal based on their total 
 -- number of previous purchases, and show the count of each segment. 
@@ -58,7 +58,7 @@ FROM customer)
 select customer_segment,count(*) AS "Number of Customers" 
 from customer_type 
 group by customer_segment;
-
+________________________________________
 --Q8. What are the top 3 most purchased products within each category? 
 WITH item_counts AS (
     SELECT category,
@@ -71,14 +71,14 @@ WITH item_counts AS (
 SELECT item_rank,category, item_purchased, total_orders
 FROM item_counts
 WHERE item_rank <=3;
- 
+ ________________________________________
 --Q9. Are customers who are repeat buyers (more than 5 previous purchases) also likely to subscribe?
 SELECT subscription_status,
        COUNT(customer_id) AS repeat_buyers
 FROM customer
 WHERE previous_purchases > 5
 GROUP BY subscription_status;
-
+________________________________________
 --Q10. What is the revenue contribution of each age group? 
 SELECT 
     age_group,
@@ -86,3 +86,56 @@ SELECT
 FROM customer
 GROUP BY age_group
 ORDER BY total_revenue desc;
+________________________________________
+--Q11. Compare customer spending
+SELECT c1.customer_id, c1.purchase_amount, c2.customer_id AS compared_to
+FROM customer c1
+JOIN customer c2
+ON c1.purchase_amount > c2.purchase_amount;
+-- Use: Compare customers with others (who spends more)
+________________________________________
+--Q12. Same purchase amount customers
+SELECT c1.customer_id, c2.customer_id, c1.purchase_amount
+FROM customer c1
+JOIN customer c2
+ON c1.purchase_amount = c2.purchase_amount
+AND c1.customer_id <> c2.customer_id;
+-- Use: Identify similar customer behavior
+________________________________________
+
+--Q13. Above average spenders
+SELECT customer_id, purchase_amount
+FROM customer
+WHERE purchase_amount > (
+    SELECT AVG(purchase_amount) FROM customer
+);
+-- Use: Find high-value customers
+________________________________________
+--Q14. Customers buying top products
+SELECT customer_id, item_purchased
+FROM customer
+WHERE item_purchased IN (
+    SELECT item_purchased
+    FROM customer
+    GROUP BY item_purchased
+    ORDER BY COUNT(*) DESC
+    LIMIT 3
+);
+-- Use: Customers buying most popular products
+________________________________________
+
+--Q15. Rank customers by spending
+SELECT customer_id,
+       purchase_amount,
+       RANK() OVER (ORDER BY purchase_amount DESC) AS rank
+FROM customer;
+-- Use: Top customers / VIP ranking
+________________________________________
+--Q16 Top products per category
+SELECT category,
+       item_purchased,
+       COUNT(*) AS total_orders,
+       ROW_NUMBER() OVER (PARTITION BY category ORDER BY COUNT(*) DESC) AS rank
+FROM customer
+GROUP BY category, item_purchased;
+-- Use: Bestselling products in each category
